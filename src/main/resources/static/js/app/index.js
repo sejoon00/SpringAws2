@@ -1,15 +1,17 @@
 var main = {
     init : function () {
         var _this = this;
-        $('#btn-save').on('click', function () {
+        $('#btn-save').unbind("click").bind('click', function (e) {
+//            e.stopPropagation();
+//            e.preventDefault();
             _this.save();
         });
 
-        $('#btn-update').on('click', function () {
+        $('#btn-update').unbind("click").bind('click', function () {
             _this.update();
         });
 
-        $('#btn-delete').on('click', function () {
+        $('#btn-delete').unbind("click").bind('click', function () {
             _this.delete();
         });
     },
