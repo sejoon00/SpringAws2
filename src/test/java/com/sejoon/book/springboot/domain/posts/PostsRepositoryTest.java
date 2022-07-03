@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest //별다른 설정없으면 H2를 자동 실행
 public class PostsRepositoryTest {
 
     @Autowired
@@ -32,7 +32,9 @@ public class PostsRepositoryTest {
         String title = "테스트 게시글";
         String content = "테스트 본문";
 
-        postsRepository.save(Posts.builder()
+        //postsRepository.save : 테이블 posts에 insert/update 쿼리 실행
+        //                     : id 값이 있으면 update, 없다면 insert
+        postsRepository.save(Posts.builder()    //다음과 같이 어떤 필드에 무슨 값을 넣을지 명시적으로 표현
                 .title(title)
                 .content(content)
                 .author("sejoon313@gmail.com")
