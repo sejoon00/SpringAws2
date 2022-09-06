@@ -33,7 +33,7 @@ public class PostsApiControllerTest {
     private int port;
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private TestRestTemplate restTemplate;  //Rest Api를 이해해보자
 
     @Autowired
     private PostsRepository postsRepository;
@@ -57,7 +57,7 @@ public class PostsApiControllerTest {
         String url = "http://localhost:" + port + "/api/v1/posts";
 
         //when
-        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
+        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class); //Rest Api를 이해해보자
 
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -71,7 +71,7 @@ public class PostsApiControllerTest {
     @Test
     public void Posts_수정된다() throws Exception {
         //given
-        Posts savedPosts = postsRepository.save(Posts.builder()
+        Posts savedPosts = postsRepository.save(Posts.builder() //저장된 post를 만들어줌
                 .title("title")
                 .content("content")
                 .author("author")
@@ -81,7 +81,7 @@ public class PostsApiControllerTest {
          String expectedTitle = "title2";
          String expectedContent = "content2";
 
-        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
+        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder() //update Dto를 만들어줌
                 .title(expectedTitle)
                 .content(expectedContent)
                 .build();
@@ -91,7 +91,7 @@ public class PostsApiControllerTest {
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
         //when
-        ResponseEntity<Long> responseEntity = restTemplate.
+        ResponseEntity<Long> responseEntity = restTemplate.  //rest Api를 호출하긴 위한 객체, http 통신에 사용
                 exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
         //then

@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 //이 클래스에 Auditing 기능을 포함시킨다.
 public class BaseTimeEntity {
     //BaseTimeEntity는 모든 Entity들의 상위클래스가 되어
-    // Entity들의 createdDate, modiefiedDate를 자도응로 관리한느 역할을 한다.
+    // Entity들의 createdDate, modiefiedDate를 자도응로 관리하는 역할을 한다.
 
     @CreatedDate
     //Entity가 생성되어 저장될 때 시간이 자동 저장된다.

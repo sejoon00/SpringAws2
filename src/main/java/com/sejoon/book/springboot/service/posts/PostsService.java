@@ -8,12 +8,14 @@ import com.sejoon.book.springboot.web.dto.PostsSaveRequestDto;
 import com.sejoon.book.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
+//final이 선언된 모든 필드를 인자값으로 하는 생성자를 롬복 @RequiredArgsConstructor 이 대신 생성해줌
+//스프링에서 Bean을 주입받는 형식중 @Autowired도 있지만 생성자를 통해서 주입받는 것이 가장 권장됨 그래서 생성자에서 Bean 주입해줌
 @Service
 public class PostsService {
     private final PostsRepository postsRepository;
@@ -52,12 +54,10 @@ public class PostsService {
         return new PostsResponseDto(entity);
     }
 
-    @Transactional()
+    @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc() {
         return postsRepository.findAllDesc().stream()
                 .map(PostsListResponseDto::new)// .map(posts -> new PostsListResponseDto(posts))과 같음
                 .collect(Collectors.toList());
     }
-
-
 }

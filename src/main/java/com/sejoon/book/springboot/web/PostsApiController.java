@@ -13,6 +13,11 @@ public class PostsApiController {
 
     private final PostsService postsService;
 
+    //GET: 서버로 부터 데이터를 취득
+    //POST: 서버에 데이터를 추가, 작성 등
+    //PUT: 서버의 데이터를 갱신, 작성 등
+    //DELETE: 서버의 데이터를 삭제
+
     //POST
     //URL에 변수(데이터)를 노출하지 않고 요청
     //데이터를 Body에 포함
@@ -21,12 +26,13 @@ public class PostsApiController {
 
    @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto) {
-        //@RequestBody은 데이터를 문자열로 받아와서
+        //@RequestBody는 데이터를 문자열로 받아와서
         //JSON 형식의 데이터를 자동으로 뒤에 오는 객체 형식으로 전환해서 받아온다.
-        return postsService.save(requestDto);
+        return postsService.save(requestDto); //Service에서 return 받는게 결국 id 값
     }
 
     @PutMapping("/api/v1/posts/{id}")
+    //{id}를 @PathVariable Long id의 id에 넣어줌
     public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }

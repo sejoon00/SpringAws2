@@ -11,6 +11,7 @@ public interface PostsRepository extends JpaRepository<Posts, Long>//<Entity클�
 //Entity 객체랑 같은 패키지에 있어야함
 {
 
+    //index.mastache에서 post list를 사용할 수 있게 해줌
     @Query("SELECT p FROM Posts p ORDER BY p.id DESC")
     List<Posts> findAllDesc();
 }

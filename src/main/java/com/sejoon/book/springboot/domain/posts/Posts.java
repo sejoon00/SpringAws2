@@ -16,8 +16,8 @@ import javax.persistence.*;
 //JPA 어노테이션이며 테이블과 링크될 클래스임을 나타냄
 //카멜케이스를 언더스코어 네이밍(_)으로 테이블 이름을 매칭
 public class Posts extends BaseTimeEntity {
-    @Id
-    //해당 테이블의 PK필드를 나타냄
+
+    @Id //해당 테이블의 PK필드를 나타냄
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //PK 생성 규칙을 나타냄(Primary Key, 중복값을 가질 수 없는 특별히 선정된 키, 반드시 필요)
     //GenerationType.IDENTITY을 추가해야만 auto_increment가 됨 ->SQL과 관련됨

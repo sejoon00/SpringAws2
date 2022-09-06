@@ -44,7 +44,6 @@ public class IndexControllerTest {
         //지금은 mustache의 HTML 코드를 string으로 받고 있다.
         //mustache가 "index" string을 자동으로 index.mustache로 바꾸어준다.
 
-
         //then
         Assertions.assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
 
